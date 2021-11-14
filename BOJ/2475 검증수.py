@@ -1,0 +1,1 @@
+print(sum(num ** 2 for num in list(map(int, input().split()))) % 10)
