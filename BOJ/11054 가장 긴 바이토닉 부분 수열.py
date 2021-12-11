@@ -1,13 +1,24 @@
-N = int(input())
-arr = list(map(int, input().split()))
-lCnt, rCnt = [1] * N, [1] * N
+def left_check(idx):
+    max_cnt = 1
+    for x in range(idx - 1, -1, -1):
+        if A[x] < A[idx]:
+            max_cnt = max(left_cnt[x] + 1, max_cnt)
+    return max_cnt
+
+
+def right_check(idx):
+    max_cnt = 1
+    for x in range(idx + 1, N):
+        if A[idx] > A[x]:
+            max_cnt = max(right_cnt[x] + 1, max_cnt)
+    return max_cnt
+
+
+N, A = int(input()), list(map(int, input().split()))
+left_cnt, right_cnt = [1] * N, [1] * N
 
 for i in range(1, N):
-    for j in range(i):
-        lCnt[i] = max(lCnt[i], lCnt[j] * (arr[j] < arr[i]) + 1)
-for i in range(N - 1, 0, -1):
-    for j in range(N - 1, i - 1, -1):
-        rCnt[i] = max(rCnt[i], rCnt[j] * (arr[j] < arr[i]) + 1)
+    left_cnt[i] = left_check(i)
+    right_cnt[N - 1 - i] = right_check(N - 1 - i)
 
-sCnt = [lCnt[i] + rCnt[i] - 1 for i in range(N)]
-print(max(sCnt))
+print(max([left_cnt[x] + right_cnt[x] for x in range(N)]) - 1)
