@@ -18,11 +18,6 @@ def dijkstra(_adl):
 
 
 N, M, X = map(int, input().split())
-
-dij = [[float('inf') for _ in range(N + 1)] for __ in range(N + 1)]
-for i in range(1, N + 1):
-    dij[i][i] = 0
-
 go_adl = [[] for _ in range(N + 1)]
 from_adl = [[] for _ in range(N + 1)]
 for _ in range(M):
