@@ -1,4 +1,4 @@
-x = y = max_n = 0
+x = y = max_n = -1
 for i in range(9):
     nums = list(map(int, input().split()))
     for idx, num in enumerate(nums):
