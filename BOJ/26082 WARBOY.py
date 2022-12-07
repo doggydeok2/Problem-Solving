@@ -1,2 +1,1 @@
-A, B, C = map(int, input().split())
-print(3 * C * B // A)
+print('FS'[input().find('9') == -1])
